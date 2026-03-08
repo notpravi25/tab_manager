@@ -111,8 +111,61 @@ Example categories inside the extension popup:
 🎬 Entertainment
 📌 Other
 
-
 ---
+
+# 🔒 Privacy & Technical Approach
+
+Smart Tab Manager is designed with **privacy-first principles**.
+
+### URL-Based Classification
+
+The extension categorizes tabs using **URL keyword matching**.
+Each open tab's URL is compared against predefined keyword rules to determine its category.
+
+Example logic:
+
+* `github.com` → Work
+* `coursera.org` → Study
+* `openai.com` → AI
+* `youtube.com` → Entertainment
+
+This lightweight classification approach ensures **fast processing without external dependencies**.
+
+### Local Processing Only
+
+All tab analysis is performed **locally within the browser** using the Chrome Extension API.
+
+No tab data is:
+
+* transmitted to external servers
+* stored remotely
+* tracked for analytics
+
+### No Data Collection
+
+Smart Tab Manager **does not collect, store, or transmit any personal data**.
+
+The extension only uses the following browser permissions:
+
+* `tabs` → read open tab URLs for categorization
+* `storage` → store local settings like Focus Mode state
+* `notifications` → send inactive tab alerts
+* `alarms` → schedule background tab checks
+
+All data remains **inside the user's browser environment**.
+
+### Secure & Lightweight Design
+
+The extension uses **Manifest V3**, ensuring compatibility with Chrome's latest security architecture.
+
+Key APIs used:
+
+* Chrome Tabs API
+* Chrome Storage API
+* Chrome Alarms API
+* Declarative Net Request API
+
+This design keeps the extension **secure, lightweight, and privacy-friendly**.
 
 # ⚙️ Installation (Manual)
 
@@ -175,64 +228,6 @@ smart-tab-manager
 * Chrome Extension API
 * Manifest V3
 * Declarative Net Request API
-
----
-
----
-
-# 🔒 Privacy & Technical Approach
-
-Smart Tab Manager is designed with **privacy-first principles**.
-
-### URL-Based Classification
-
-The extension categorizes tabs using **URL keyword matching**.
-Each open tab's URL is compared against predefined keyword rules to determine its category.
-
-Example logic:
-
-* `github.com` → Work
-* `coursera.org` → Study
-* `openai.com` → AI
-* `youtube.com` → Entertainment
-
-This lightweight classification approach ensures **fast processing without external dependencies**.
-
-### Local Processing Only
-
-All tab analysis is performed **locally within the browser** using the Chrome Extension API.
-
-No tab data is:
-
-* transmitted to external servers
-* stored remotely
-* tracked for analytics
-
-### No Data Collection
-
-Smart Tab Manager **does not collect, store, or transmit any personal data**.
-
-The extension only uses the following browser permissions:
-
-* `tabs` → read open tab URLs for categorization
-* `storage` → store local settings like Focus Mode state
-* `notifications` → send inactive tab alerts
-* `alarms` → schedule background tab checks
-
-All data remains **inside the user's browser environment**.
-
-### Secure & Lightweight Design
-
-The extension uses **Manifest V3**, ensuring compatibility with Chrome's latest security architecture.
-
-Key APIs used:
-
-* Chrome Tabs API
-* Chrome Storage API
-* Chrome Alarms API
-* Declarative Net Request API
-
-This design keeps the extension **secure, lightweight, and privacy-friendly**.
 
 ---
 
