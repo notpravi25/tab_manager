@@ -1,0 +1,57 @@
+{
+  "manifest_version": 3,
+  "name": "Smart Tab Manager",
+  "version": "1.0",
+  "description": "Organize, categorize, and clean up your browser tabs easily.",
+
+  "permissions": [
+    "tabs",
+    "storage",
+    "notifications",
+    "alarms",
+    "declarativeNetRequest"
+  ],
+
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "*://*.netflix.com/*",
+    "*://*.spotify.com/*",
+    "*://*.primevideo.com/*",
+    "*://*.twitch.tv/*",
+    "*://*.hulu.com/*",
+    "*://*.disneyplus.com/*",
+    "*://*.reddit.com/*",
+    "*://*.instagram.com/*",
+    "*://*.snapchat.com/*",
+    "*://*.twitter.com/*",
+    "*://*.x.com/*",
+    "*://*.facebook.com/*",
+    "*://*.pinterest.com/*"
+  ],
+
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "focus_rules",
+        "enabled": false,
+        "path": "focus_rules.json"
+      }
+    ]
+  },
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Smart Tab Manager"
+  },
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

@@ -1,0 +1,403 @@
+/* ============================================
+   Smart Tab Manager — styles.css
+   Clean, readable UI for beginner developers
+   ============================================ */
+
+/* -- Google Font Import -- */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&display=swap');
+
+/* -- CSS Variables (easy to customise!) -- */
+:root {
+  --bg:          #0f1117;
+  --surface:     #1a1d27;
+  --surface2:    #22263a;
+  --border:      #2e3250;
+  --accent:      #6c8bff;
+  --accent-glow: rgba(108, 139, 255, 0.18);
+  --study:       #43c6ac;
+  --work:        #f7971e;
+  --entertain:   #f953c6;
+  --other:       #7f8ca8;
+  --text:        #e4e8ff;
+  --text-muted:  #7f8ca8;
+  --danger:      #ff5f6d;
+  --radius:      10px;
+  --font-ui:     'DM Sans', sans-serif;
+  --font-mono:   'DM Mono', monospace;
+}
+
+/* -- Reset & Base -- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-ui);
+  background: var(--bg);
+  color: var(--text);
+  width: 380px;
+  min-height: 200px;
+  max-height: 580px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* -- Scrollbar -- */
+body::-webkit-scrollbar { width: 5px; }
+body::-webkit-scrollbar-track { background: var(--bg); }
+body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+/* ============================================
+   HEADER
+   ============================================ */
+.header {
+  background: var(--surface);
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.app-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text);
+  letter-spacing: -0.2px;
+}
+
+.app-subtitle {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* -- Tab count badge -- */
+.tab-count-badge {
+  background: var(--accent-glow);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   ACTION BUTTONS (Focus Mode + Close Dupes)
+   ============================================ */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px 10px;
+  border: none;
+  border-radius: var(--radius);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  outline: none;
+}
+
+.btn-focus {
+  background: rgba(249, 83, 198, 0.12);
+  border: 1px solid rgba(249, 83, 198, 0.35);
+  color: var(--entertain);
+}
+.btn-focus:hover {
+  background: rgba(249, 83, 198, 0.22);
+  border-color: var(--entertain);
+  transform: translateY(-1px);
+}
+
+.btn-close-website {
+  background: rgba(108, 139, 255, 0.1);
+  border: 1px solid rgba(108, 139, 255, 0.3);
+  color: var(--accent);
+}
+.btn-close-website:hover {
+  background: rgba(108, 139, 255, 0.22);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.btn-dupes {
+  background: rgba(255, 95, 109, 0.1);
+  border: 1px solid rgba(255, 95, 109, 0.3);
+  color: var(--danger);
+}
+.btn-dupes:hover {
+  background: rgba(255, 95, 109, 0.2);
+  border-color: var(--danger);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   TOAST NOTIFICATION
+   ============================================ */
+#toast {
+  display: none;
+  margin: 8px 14px 0;
+  padding: 7px 12px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  background: rgba(67, 198, 172, 0.12);
+  border: 1px solid rgba(67, 198, 172, 0.35);
+  color: var(--study);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+
+/* ============================================
+   CATEGORY SECTIONS
+   ============================================ */
+#tab-list {
+  padding: 10px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.category-section {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+/* -- Category heading bar -- */
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+}
+
+.category-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.category-count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  background: rgba(255,255,255,0.07);
+  padding: 1px 7px;
+  border-radius: 10px;
+  color: var(--text-muted);
+}
+
+/* Category color theming */
+.cat-study  .category-header { color: var(--study); }
+.cat-study  .category-dot    { background: var(--study); }
+
+.cat-work   .category-header { color: var(--work); }
+.cat-work   .category-dot    { background: var(--work); }
+
+.cat-entertainment .category-header { color: var(--entertain); }
+.cat-entertainment .category-dot    { background: var(--entertain); }
+
+.cat-other  .category-header { color: var(--other); }
+.cat-other  .category-dot    { background: var(--other); }
+
+/* -- Tab rows -- */
+.tab-wrapper {
+  border-bottom: 1px solid var(--border);
+}
+.tab-wrapper:last-child {
+  border-bottom: none;
+}
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.tab-item:hover { background: var(--surface2); }
+
+/* Info block — stacks title and context badge */
+.tab-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+/* Context badge — shown under the tab title */
+.tab-context-badge {
+  font-size: 10px;
+  color: var(--accent);
+  background: var(--accent-glow);
+  border: 1px solid rgba(108,139,255,0.2);
+  border-radius: 4px;
+  padding: 1px 6px;
+  width: fit-content;
+  font-family: var(--font-mono);
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.tab-favicon {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.tab-title {
+  flex: 1;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--text);
+}
+
+/* -- Close Site button -- */
+.btn-close-site {
+  flex-shrink: 0;
+  background: rgba(255, 95, 109, 0.08);
+  border: 1px solid rgba(255, 95, 109, 0.2);
+  color: var(--danger);
+  font-size: 10px;
+  font-family: var(--font-ui);
+  padding: 3px 7px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.12s;
+  white-space: nowrap;
+}
+.btn-close-site:hover {
+  background: rgba(255, 95, 109, 0.2);
+  border-color: var(--danger);
+}
+
+/* -- Empty state -- */
+.empty-state {
+  text-align: center;
+  padding: 30px 20px;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+.empty-state .emoji { font-size: 28px; display: block; margin-bottom: 8px; }
+
+/* ============================================
+   TAB ALERT BANNER
+   ============================================ */
+.tab-alert {
+  margin: 8px 14px 0;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  line-height: 1.5;
+  animation: fadeIn 0.2s ease;
+}
+
+.alert-warning {
+  background: rgba(247, 151, 30, 0.12);
+  border: 1px solid rgba(247, 151, 30, 0.4);
+  color: var(--work);
+}
+
+.alert-danger {
+  background: rgba(255, 95, 109, 0.12);
+  border: 1px solid rgba(255, 95, 109, 0.4);
+  color: var(--danger);
+}
+
+/* ============================================
+   SEARCH BAR
+   ============================================ */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 14px 0;
+  padding: 7px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.15s;
+}
+
+.search-bar:focus-within {
+  border-color: var(--accent);
+}
+
+.search-icon {
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.search-bar input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 12px;
+}
+
+.search-bar input::placeholder {
+  color: var(--text-muted);
+}
+
+#search-clear {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 11px;
+  padding: 0 2px;
+  flex-shrink: 0;
+  transition: color 0.12s;
+}
+
+#search-clear:hover {
+  color: var(--danger);
+}

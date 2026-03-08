@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Tab Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- =============================================
+       HEADER — shows app title + total tab count
+       ============================================= -->
+  <header class="header">
+    <div class="header-left">
+      <span class="logo"></span>
+      <div>
+        <div class="app-title">Smart Tab Manager</div>
+        <div class="app-subtitle">Manifest V3</div>
+      </div>
+    </div>
+    <!-- Total tab count is injected here by popup.js -->
+    <div class="tab-count-badge" id="total-count">0 tabs</div>
+  </header>
+
+  <!-- =============================================
+       ACTION BUTTONS — Focus Mode & Close Dupes
+       ============================================= -->
+  <div class="actions">
+    <button class="btn btn-focus" id="btn-focus">
+       Focus Mode
+    </button>
+    <button class="btn btn-dupes" id="btn-dupes">
+       Close Duplicates
+    </button>
+    <button class="btn btn-close-website" id="btn-close-website">
+       Close Website
+    </button>
+  </div>
+
+  <!-- =============================================
+       TAB ALERT — warns when too many tabs are open
+       ============================================= -->
+  <div id="tab-alert" style="display:none"></div>
+
+  <!-- =============================================
+       SEARCH BAR — filter tabs by typing
+       ============================================= -->
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input
+      type="text"
+      id="search-input"
+      placeholder="Search tabs by name or URL..."
+      autocomplete="off"
+    />
+    <button id="search-clear" title="Clear search">✕</button>
+  </div>
+
+
+  <div id="toast"></div>
+
+  <!-- =============================================
+       TAB LIST — categories are injected here
+       ============================================= -->
+  <div id="tab-list">
+    <!-- Category sections are built dynamically by popup.js -->
+    <div class="empty-state">
+      <span class="emoji">⏳</span>
+      Loading your tabs…
+    </div>
+  </div>
+
+  <!-- Load our JavaScript last, after the HTML is ready -->
+  <script src="popup.js"></script>
+</body>
+</html>
